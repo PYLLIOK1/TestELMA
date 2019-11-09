@@ -1,7 +1,7 @@
 ﻿@model TestELMA.Models.ModelView
 
 <div>
-    <h4>ModelView</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,14 +26,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nominal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>

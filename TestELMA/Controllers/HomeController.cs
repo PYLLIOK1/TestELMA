@@ -35,18 +35,24 @@ namespace TestELMA.Controllers
         }
         public ActionResult Update(string name)
         {
-            
-            ModelView model = new ModelView();
-            using (var client = new WebClient())
-            using (var stream = client.OpenRead("https://www.cbr-xml-daily.ru/daily_json.js"))
-            using (var sr = new StreamReader(stream))
+            if(name != null)
             {
-                string text = sr.ReadToEnd();
-                JObject o = JObject.Parse(text);
-                var a = o["Valute"][name];
-                model = a.ToObject<ModelView>();
+                ModelView model = new ModelView();
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("https://www.cbr-xml-daily.ru/daily_json.js"))
+                using (var sr = new StreamReader(stream))
+                {
+                    string text = sr.ReadToEnd();
+                    JObject o = JObject.Parse(text);
+                    var a = o["Valute"][name];
+                    model = a.ToObject<ModelView>();
+                }
+                return PartialView(model);
             }
-            return PartialView(model);
+            else
+            {
+                return View("Index");
+            }
         }
     }
 }

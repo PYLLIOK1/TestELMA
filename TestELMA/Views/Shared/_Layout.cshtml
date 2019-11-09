@@ -44,7 +44,7 @@
             e.preventDefault();
             var name = $('#Value').val();
             name=encodeURIComponent(name);
-            $('#results').load('@Url.Action("Update", "Home")?name='+name)
+            $('#results').load('@Url.Action("Update", "Home")?name=' + name);
         });
     });
 </script>
